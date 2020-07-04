@@ -1,12 +1,31 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { MdAdd } from 'react-icons/md'
 import { Container } from  './styles'
+import { useDrop } from 'react-dnd'
 
+import BoardContext from '../Board/context'
 import Card from '../Card'
 
 export default function List({ data, index: listIndex }) {
+
+    const { moveList } = useContext(BoardContext)
+
+    const [{ isOver }, dropRef] = useDrop({
+        accept: 'CARD',
+        canDrop: (item) => {
+            if(item.listIndex === listIndex) return
+            return true
+        },
+        drop: (item, monitor) => {
+            moveList(item.listIndex, listIndex, item.index)
+        },
+        collect: (monitor) => ({
+            isOver: monitor.isOver(),
+        })
+    })
+
     return (
-        <Container  done={data.done}>
+        <Container ref={dropRef} data={data} isOver={isOver} >
             <header>
                 <h2>{data.title}</h2>
                 {
@@ -15,8 +34,7 @@ export default function List({ data, index: listIndex }) {
                             <MdAdd size={24}color="#fff" />
                         </button>
                     )
-                }
-                
+                }         
             </header>
 
             <ul>

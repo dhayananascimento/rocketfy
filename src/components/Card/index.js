@@ -25,6 +25,7 @@ export default function Card({ data, index, listIndex }) {
 
             const draggedIndex = item.index
             const targetIndex = index
+            
             if(draggedIndex === targetIndex && draggedListIndex === targetListIndex)
                 return
 

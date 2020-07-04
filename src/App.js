@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import  GlobalStyle from './styles/global'
 
 import { HTML5Backend } from 'react-dnd-html5-backend'
@@ -16,7 +16,7 @@ function App() {
 
       <GlobalStyle />
     </DndProvider>
-  );
+  )
 }
 
-export default App;
+export default App

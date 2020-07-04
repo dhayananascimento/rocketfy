@@ -1,11 +1,16 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
     padding: 0 15px;
     height: 100%;
     flex: 0 0 320px;
-    opacity: ${props => props.done? 0.6 : 1};
+    opacity: ${props => props.data.done? 0.6 : 1};
+    overflow-y: auto;
+    margin-left: 10px;
+
    
+    border: 2px solid transparent;
+
     && + div {
         border-left: 2px solid rgba(0,0,0,0.05);
     }
@@ -14,7 +19,8 @@ export const Container = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 42px;
+        padding-top: 5px;
+        height: 52px;
 
         h2 {
             font-weight: 500;
@@ -34,5 +40,11 @@ export const Container = styled.div`
 
     ul {
         margin-top: 30px;
+    }
+
+    ${
+        props => props.isOver && css`
+            border: 2px solid rgba(0, 0, 0, 0.05);
+        `
     }
 `
