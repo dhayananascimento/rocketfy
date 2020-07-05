@@ -6,7 +6,7 @@ Este é um projeto com a finalidade de recriar a interface do PIPEFY usando **Re
 
 ## Tecnologias
 * React
-* Immerresolução
+* Immer
 * React DnD
 * React Icons
 * Styled Components
